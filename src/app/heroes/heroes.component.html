@@ -1,0 +1,107 @@
+<h2>Products</h2>
+
+<div>
+  <!-- <label>Product name:
+    <input #heroName />
+  </label> -->
+  <!-- (click) passes input value to add() and then clears the input -->
+  <!-- <button (click)="add(heroName.value); heroName.value=''">
+    Search
+  </button> -->
+  <!-- <form class="example-form">
+      <mat-form-field style="width:100%" class="example-full-width">
+          <mat-icon matPrefix>search</mat-icon>
+        <input type="text" placeholder="Search for a Product" aria-label="Product" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form> -->
+</div>
+<button mat-raised-button (click)="toggleView(showType)"><mat-icon>{{iconView}}</mat-icon></button>
+
+<br>
+<br>
+<div *ngIf="showType=='grid'">
+  <mat-grid-list cols="3" rows="5" rowHeight="15em"  >
+    <!-- rowHeight="28em"  -->
+    <!-- rowHeight="20em" -->
+    <mat-grid-tile *ngFor="let hero of heroes; let i = index">
+      <mat-card class="example-card" style="text-align:-webkit-center ">
+        <!--  style="max-width:10em;height:auto;margin-left:1%"  -->
+        <img mat-card-image src="{{hero.imageUrl}}" style="width:50%" alt="Photo of {{hero.name}}">
+        <mat-card-content>
+          <h3>
+            RM {{hero.price}}
+          </h3>
+          <h4 class="prod-name">{{hero.name}}</h4>
+        </mat-card-content>
+        <mat-card-actions>
+          <button (click)="addFav(hero)" *ngIf="hero.favourite" style="color:crimson" mat-icon-button>
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button (click)="addFav(hero)" *ngIf="!hero.favourite" mat-icon-button>
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button mat-icon-button (click)="addList()">
+            <mat-icon>add_shopping_cart</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <!-- [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color" -->
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+<div *ngIf="showType=='list'">
+  <mat-list *ngFor="let hero of heroes">
+    <mat-list-item>
+      <img mat-list-icon style="height: 2em;width: auto;" src="{{hero.imageUrl}}" />
+      <span routerLink="/detail/{{hero.id}}" mat-line>{{hero.name}}</span>
+      <h4 mat-line>RM {{hero.price}}</h4>
+      <button mat-icon-button *ngIf="hero.favourite" (click)="addFav(hero)" style="color:crimson">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button *ngIf="!hero.favourite" (click)="addFav(hero)">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button (click)="addList(hero)" class="sm-button">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+
+  <!-- <mat-list>
+      <h3 mat-subheader>Folders</h3>
+      <mat-list-item *ngFor="let folder of folders">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{folder.name}}</h4>
+        <p mat-line> {{folder.updated | date}} </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Notes</h3>
+      <mat-list-item *ngFor="let note of notes">
+        <mat-icon mat-list-icon>note</mat-icon>
+        <h4 mat-line>{{note.name}}</h4>
+        <p mat-line> {{note.updated | date}} </p>
+      </mat-list-item>
+    </mat-list> -->
+</div>
+
+
+<!-- <ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+    <button class="delete" title="add to list"
+      (click)="addList(hero)">+</button>
+    <button class="delete" title="delete hero"
+      (click)="delete(hero)">x</button>
+    
+  </li>
+</ul> -->

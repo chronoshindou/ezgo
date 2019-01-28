@@ -1,0 +1,73 @@
+<mat-sidenav-container  class="example-container" (backdropClick)="close('backdrop')">
+  
+  <!-- <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')"> -->
+      <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+
+      <mat-toolbar color="primary">
+        Menu
+        </mat-toolbar>
+      <button mat-menu-item routerLink="/dashboard">
+        <mat-icon>home</mat-icon>Home
+      </button>
+      <button mat-menu-item routerLink="/heroes">
+        <mat-icon>face</mat-icon>Products
+      </button>
+      <button mat-menu-item routerLink="/shoplist">
+        <mat-icon>shopping_cart</mat-icon>Shop List
+      </button>
+      <button mat-menu-item routerLink="/loyalty">
+        <mat-icon>star_border</mat-icon>Loyalty
+      </button>
+      <button mat-menu-item>
+        <mat-icon>store</mat-icon>Change Store
+      </button>
+      <button mat-menu-item routerLink="/loyalty">
+        <mat-icon>exit_to_app</mat-icon>Logout
+      </button>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <!-- <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
+      <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p>
+      <p>Events:</p>
+      <div class="example-events">
+        <div *ngFor="let e of events">{{e}}</div>
+      </div> -->
+      
+      <mat-toolbar color="primary">
+          <mat-toolbar-row>
+
+              <form class="example-form" style="width:85%">
+                  <mat-icon mat-button (click)="sidenav.toggle()">menu</mat-icon>
+                  <mat-form-field style="width:100%;margin-left:0.2em;max-height:1em" class="example-full-width">
+                      <input type="text" placeholder="Search for a Product" aria-label="Product" 
+                    matInput [formControl]="myControl" [matAutocomplete]="auto">
+                
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                          {{option.name}}
+                      </mat-option>
+                    </mat-autocomplete>
+                    <!-- <mat-icon matPrefix>search</mat-icon> -->
+
+                  </mat-form-field>
+                  <mat-icon mat-button>search</mat-icon>
+                  <!-- <span class="example-fill-remaining-space"></span> -->
+                </form>
+            <!-- <span class="example-fill-remaining-space"></span> -->
+            <!-- <span class="example-fill-remaining-space"></span> -->
+
+          </mat-toolbar-row>
+        </mat-toolbar>
+    <!-- <p><mat-checkbox [(ngModel)]="opened">sidenav.opened</mat-checkbox></p>
+    <p><button mat-button (click)="sidenav.toggle()">sidenav.toggle()</button></p> -->
+
+    <!-- <h1>{{title}}</h1> -->
+    <!-- <app-footer class="mt-auto"></app-footer> -->
+        <app-header></app-header>
+    <router-outlet></router-outlet>
+    <!-- <app-messages></app-messages> -->
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

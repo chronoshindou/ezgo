@@ -1,0 +1,25 @@
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+  .example-stretched-tabs {
+   max-width: 100%;
+ }
+ 
+ .mat-tab-link {
+   opacity: 1 !important;
+   border-radius: 2px 10px 2px 10px;
+ }
+
+ nav a {
+   margin-right: 0.5em;
+   background-color: white;
+ }
+
+.navActive {
+    /* background-color: #5EADB0; */
+    /* color: #D5FEFF; */
+    /* border: 1px solid yellow; */
+    font-weight: bold;
+}

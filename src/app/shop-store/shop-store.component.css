@@ -1,0 +1,5 @@
+.notavailable {
+    text-decoration: line-through;
+    text-decoration-color: red;
+    font-style: italic;
+}

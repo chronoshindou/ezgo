@@ -1,0 +1,72 @@
+<div *ngIf="hero">
+  <!-- <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <img src='{{hero.imageUrl}}' style="max-width: 12em;" />
+  </div>
+  <div>
+    <label>Location: <span>{{hero.location}}</span></label> <br>
+    <label>Isle: <span>{{hero.isle}}</span></label> <br>
+    <label>Rack: <span>{{hero.rack}}</span></label> <br>
+    <label>Shelf: <span>{{hero.shelf}}</span></label> <br>
+    <label>Price: <span>RM {{hero.price}}</span></label> <br>
+  </div> -->
+
+  <mat-card class="example-card">
+      <mat-card-header>
+        <img mat-card-avatar class="example-header-image"
+        src="{{hero.imageUrl}}" />
+        <mat-card-title>{{hero.name | uppercase}}</mat-card-title>
+        <mat-card-subtitle>Store : {{hero.location}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image 
+      src="{{hero.imageUrl}}" 
+      alt="Photo of a {{hero.name}}">
+      <mat-card-content>
+        <p>
+            <span>Price: RM {{hero.price}}</span> <br>
+            <label>Isle: <span>{{hero.isle}}</span></label> 
+            <label>Rack: <span>{{hero.rack}}</span></label> 
+            <label>Shelf: <span>{{hero.shelf}}</span></label> 
+
+            <!-- <br> -->
+          </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button><mat-icon>favorite</mat-icon></button>
+        <button mat-button><mat-icon>add_shopping_cart</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+
+  <!-- <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name" />
+    </label>
+  </div>
+  <div>
+    <label>location:
+      <input [(ngModel)]="hero.location" placeholder="location" />
+    </label>
+</div>
+<div>
+    <label>isle:
+      <input [(ngModel)]="hero.isle" placeholder="isle" />
+    </label>
+  </div>
+  <div>
+    <label>rack:
+      <input [(ngModel)]="hero.rack" placeholder="rack" />
+    </label>
+  </div>
+  <div><label>shelf:
+      <input [(ngModel)]="hero.shelf" placeholder="shelf" />
+    </label>
+  </div>
+    <div>
+    <label>price:
+      <input [(ngModel)]="hero.price" placeholder="price" />
+    </label>
+  </div> -->
+  <!-- <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button> -->
+</div>

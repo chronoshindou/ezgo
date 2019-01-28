@@ -1,0 +1,133 @@
+<!-- <form class="example-form">
+  <mat-form-field style="width:100%;margin-left:0.2em" class="example-full-width">
+
+    <input type="text" placeholder="Search for a Product" aria-label="Product" matInput [formControl]="myControl" [matAutocomplete]="auto">
+
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-icon matPrefix>search</mat-icon>
+  </mat-form-field>
+</form> -->
+<!-- <button mat-raised-button (click)="openBottomSheet()"><mat-icon>store</mat-icon></button> -->
+
+<h3>Today's Promo at BIG Store</h3>
+
+<!-- <div class="grid grid-pad">
+  <div *ngFor="let promo of promos" class="col-1-4"
+      routerLink="/detail/{{promo.id}}">
+    <div class="module hero">
+      <img style="max-width: 3em;" src='{{promo.imageUrl}}' />
+      <h4>{{promo.name}}</h4>
+    </div>
+  </div>
+</div> -->
+
+
+
+<!-- <mat-card class="example-card" *ngFor="let promo of promos"> -->
+  <!-- <mat-card-header>
+      <img mat-card-avatar class="example-header-image"
+      src="{{promo.imageUrl}}" />
+      <mat-card-title>{{promo.name | uppercase}}</mat-card-title>
+      <mat-card-subtitle>{{promo.location}}</mat-card-subtitle>
+    </mat-card-header> -->
+  <!-- <img mat-card-image src="{{promo.imageUrl}}" alt="Photo of a {{promo.name}}">
+  <mat-card-content>
+    <p><span>{{promo.name}} RM {{promo.price}}</span>
+      <span class="example-fill-remaining-space"></span>
+      <button mat-button>
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-button>
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+
+    </p>
+  </mat-card-content> -->
+
+  <!-- <mat-card-actions>
+      <button mat-button><mat-icon>favorite</mat-icon></button>
+      <button mat-button><mat-icon>add_shopping_cart</mat-icon></button>
+    </mat-card-actions> -->
+  <!-- <mat-divider></mat-divider>
+</mat-card> -->
+
+<!-- <owl-carousel-o [options]="customOptions">
+  <ng-template carouselSlide *ngFor="let promo of promos">
+    <img mat-card-image src="{{promo.imageUrl}}" alt="Photo of a {{promo.name}}">
+    <mat-card-content>
+      <p><span>{{promo.name}} RM {{promo.price}}</span>
+        <span class="example-fill-remaining-space"></span>
+        <button mat-button>
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-button (click)="addList()">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+
+      </p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+</ng-template>
+</owl-carousel-o> -->
+<owl-carousel [options]="mySlideOptions" [items]="promos" [carouselClasses]="['owl-theme', 'sliding']" >
+    <mat-card class="example-card" style="text-align:-webkit-center" *ngFor="let promo of promos;let i = index">
+        <img mat-card-image src="{{promo.imageUrl}}"  style="width:50%" alt="Photo of {{promo.name}}">
+        <!--  style="max-width:10em;height:auto;margin-left:1%"  -->
+        <mat-card-content>
+          <h2>
+            RM {{promo.price}}
+          </h2>
+          <h3>{{promo.name}}</h3>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-icon-button (click)="addFav(promo)" *ngIf="promo.favourite" style="color:crimson">
+                <mat-icon>favorite</mat-icon>
+              </button>
+              <button mat-icon-button  (click)="addFav(promo)" *ngIf="!promo.favourite">
+                <mat-icon>favorite</mat-icon>
+              </button>
+              <button mat-icon-button (click)="addList()">
+                <mat-icon>add_shopping_cart</mat-icon>
+              </button>
+        </mat-card-actions>
+      </mat-card>
+  <!-- <div style="margin:2em" class="item" *ngFor="let promo of promos;let i = index">
+   <div>
+     <img style="max-width:10em;height:auto;margin-left:25%" src={{promo.imageUrl}}/>
+   </div>
+   <p><span>{{promo.name}} RM {{promo.price}}</span>
+    <span class="example-fill-remaining-space"></span>
+    <button (click)="addFav(promo)" *ngIf="promo.favourite" style="color:crimson" mat-button>
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button (click)="addFav(promo)" *ngIf="!promo.favourite" mat-button>
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-button (click)="addList()">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+
+  </p>
+  </div> -->
+ </owl-carousel>
+
+
+ <h3>What's next ?</h3>
+ <button style="width:100%;background-color: darkgreen;color: white;" 
+ mat-raised-button routerLink="/heroes">Start Shopping</button>
+
+<button style="width:100%" mat-raised-button (click)="openDialog()">Change Store</button>
+<!-- <mat-grid-list cols="4" rowHeight="100px">
+      <mat-grid-tile
+          *ngFor="let tile of tiles"
+          [colspan]="tile.cols"
+          [rowspan]="tile.rows"
+          [style.background]="tile.color">
+        {{tile.text}}
+      </mat-grid-tile>
+    </mat-grid-list> -->
+<!-- <app-hero-search></app-hero-search> -->
