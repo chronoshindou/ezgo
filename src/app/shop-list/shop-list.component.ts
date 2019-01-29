@@ -5,6 +5,7 @@ import { Hero } from '../hero';
 import { List } from '../shoplist';
 import { HeroService } from '../hero.service';
 
+import {  MatSnackBar } from '@angular/material';
 export interface Food {
   value: string;
   viewValue: string;
@@ -25,7 +26,7 @@ export class ShopListComponent implements OnInit {
     // {value: 'tacos-2', viewValue: 'Tacos'}
   ];
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService,public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     //this.getHeroes();
@@ -55,7 +56,9 @@ export class ShopListComponent implements OnInit {
 
   delete(list: List): void {
     this.lists = this.lists.filter(h => h !== list);
-    this.heroService.deleteHero(list).subscribe();
+    this.heroService.deleteList(list).subscribe();
+    let snackBarRef = this.snackBar.open('Deleted item from shop list', 'Ok');
+
   }
 
   goStore(food:string) {

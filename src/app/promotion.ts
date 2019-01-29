@@ -7,4 +7,5 @@ export class Promotion {
   imageUrl: string;
   favourite?: boolean;
   floor?: string;
+  onSale?: boolean;
 }

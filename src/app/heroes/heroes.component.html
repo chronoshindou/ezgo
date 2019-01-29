@@ -20,23 +20,53 @@
       </mat-form-field>
     </form> -->
 </div>
-<button mat-raised-button (click)="toggleView(showType)"><mat-icon>{{iconView}}</mat-icon></button>
+<button mat-raised-button (click)="toggleView(showType)">
+  <mat-icon>{{iconView}}</mat-icon>
+</button>
 
 <br>
 <br>
 <div *ngIf="showType=='grid'">
-  <mat-grid-list cols="3" rows="5" rowHeight="15em"  >
+  <mat-grid-list cols="3" rows="5" rowHeight="15em">
     <!-- rowHeight="28em"  -->
     <!-- rowHeight="20em" -->
     <mat-grid-tile *ngFor="let hero of heroes; let i = index">
-      <mat-card class="example-card" style="text-align:-webkit-center ">
-        <!--  style="max-width:10em;height:auto;margin-left:1%"  -->
-        <img mat-card-image src="{{hero.imageUrl}}" style="width:50%" alt="Photo of {{hero.name}}">
+      <div class="card-group">
+        <div class="card" [ngClass]="{'border-danger': hero.onSale, 'text-danger': hero.onSale}" style="text-align:-webkit-center;width: 8rem;">
+          <img *ngIf="hero.imageUrl" class="card-img-top img-fluid text-center" src="{{hero.imageUrl}}" style="width:50%"
+            alt="{{hero.name}}">
+          <div *ngIf="hero.onSale" class="card-img-overlay">
+            <small>
+              <span class="badge badge-pill badge-danger">On sale</span>
+            </small>
+          </div>
+          <mat-icon *ngIf="!hero.imageUrl">shopping_basket</mat-icon>
+          <div class="card-body">
+            <h4 class="card-text" *ngIf="hero.onSale">RM {{hero.discount}} </h4>
+            <h4 class="card-text" *ngIf="!hero.onSale">
+              RM {{hero.price}}
+            </h4>
+            <h6 class="prod-name card-text">{{hero.name}}</h6>
+            <button (click)="addFav(hero)" *ngIf="hero.favourite" style="color:crimson" mat-icon-button>
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <button (click)="addFav(hero)" *ngIf="!hero.favourite" mat-icon-button>
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <button mat-icon-button (click)="addList(hero)">
+              <mat-icon>add_shopping_cart</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- <mat-card class="example-card" style="text-align:-webkit-center "> -->
+      <!--  style="max-width:10em;height:auto;margin-left:1%"  -->
+      <!-- <img mat-card-image src="{{hero.imageUrl}}" style="width:50%" alt="Photo of {{hero.name}}">
         <mat-card-content>
-          <h3>
+          <h4>
             RM {{hero.price}}
-          </h3>
-          <h4 class="prod-name">{{hero.name}}</h4>
+          </h4>
+          <h6 class="prod-name">{{hero.name}}</h6>
         </mat-card-content>
         <mat-card-actions>
           <button (click)="addFav(hero)" *ngIf="hero.favourite" style="color:crimson" mat-icon-button>
@@ -49,28 +79,34 @@
             <mat-icon>add_shopping_cart</mat-icon>
           </button>
         </mat-card-actions>
-      </mat-card>
-      <!-- [colspan]="tile.cols"
-        [rowspan]="tile.rows"
-        [style.background]="tile.color" -->
+      </mat-card> -->
+
     </mat-grid-tile>
   </mat-grid-list>
 </div>
 <div *ngIf="showType=='list'">
   <mat-list *ngFor="let hero of heroes">
     <mat-list-item>
-      <img mat-list-icon style="height: 2em;width: auto;" src="{{hero.imageUrl}}" />
-      <span routerLink="/detail/{{hero.id}}" mat-line>{{hero.name}}</span>
-      <h4 mat-line>RM {{hero.price}}</h4>
-      <button mat-icon-button *ngIf="hero.favourite" (click)="addFav(hero)" style="color:crimson">
+      <img matListAvatar src="{{hero.imageUrl}}" />
+      <h4 routerLink="/detail/{{hero.id}}" mat-line>{{hero.name}}</h4>
+      <h6 *ngIf="hero.onSale" mat-line><s>RM {{hero.price}}</s> RM {{hero.discount}}</h6>
+      <h6 *ngIf="!hero.onSale" mat-line>RM {{hero.price}}</h6>
+
+      <span *ngIf="hero.onSale" class="badge badge-pill badge-danger">On sale</span>
+      <mat-action-list>
+        <span (click)="addList(hero)" class="badge badge-info">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </span>
+      </mat-action-list>
+      <!-- <button mat-icon-button *ngIf="hero.favourite" (click)="addFav(hero)" style="color:crimson">
         <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button *ngIf="!hero.favourite" (click)="addFav(hero)">
+      </button> -->
+      <!-- <button mat-icon-button *ngIf="!hero.favourite" (click)="addFav(hero)">
         <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button (click)="addList(hero)" class="sm-button">
+      </button> -->
+      <!-- <button mat-icon-button (click)="addList(hero)" class="sm-button">
         <mat-icon>add_shopping_cart</mat-icon>
-      </button>
+      </button> -->
     </mat-list-item>
     <mat-divider></mat-divider>
   </mat-list>
@@ -91,6 +127,15 @@
       </mat-list-item>
     </mat-list> -->
 </div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item active"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
 
 
 <!-- <ul class="heroes">

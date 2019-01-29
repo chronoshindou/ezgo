@@ -96,7 +96,8 @@ export class HeroService {
   }
   
   addList (list: List): Observable<List> {
-    return this.http.post<Hero>(this.listUrl, list, httpOptions).pipe(
+    console.log(list.id)
+    return this.http.post<List>(this.listUrl, list, httpOptions).pipe(
       tap((list: List) => this.log(`added hero w/ id=`)),
       catchError(this.handleError<List>('addList'))
     );
@@ -113,6 +114,16 @@ export class HeroService {
       catchError(this.handleError<Hero>('deleteHero'))
     );
   }
+    /** DELETE: delete the hero from the server */
+    deleteList (list: List | number): Observable<Hero> {
+      const id = typeof list === 'number' ? list : list.id;
+      const url = `${this.listUrl}/${id}`;
+  
+      return this.http.delete<List>(url, httpOptions).pipe(
+        tap(_ => this.log(`deleted hero id=${id}`)),
+        catchError(this.handleError<List>('deleteList'))
+      );
+    }
 
   /** PUT: update the hero on the server */
   updateHero (hero: Hero): Observable<any> {

@@ -13,8 +13,8 @@
 
   <!-- class="example-stretched-tabs mat-elevation-z4" -->
   <mat-toolbar-row mat-stretch-tabs>
-    <nav mat-tab-nav-bar style="width:100%">
-      <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive="navActive" #rla="routerLinkActive"
+    <nav class="nav-fill" mat-tab-nav-bar style="width:100%" >
+      <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.link" routerLinkActive #rla="routerLinkActive"
         [active]="rla.isActive" (click)="changeStore(link)">
         <mat-icon>{{link.icon}}</mat-icon>
       </a>

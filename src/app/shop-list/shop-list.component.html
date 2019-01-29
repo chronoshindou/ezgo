@@ -1,17 +1,6 @@
 <h2>Your shopping list</h2>
 
-
-<!-- <ul class="heroes">
-  <li *ngFor="let list of lists">
-    <a routerLink="/detail/{{list.id}}">
-      <span class="badge">{{list.id}}</span> {{list.name}}
-      <span>{{list.location}}</span>
-    </a>
-    <button class="delete" title="delete list"
-      (click)="delete(list)">x</button>
-  </li>
-</ul> -->
-<mat-list *ngFor="let list of lists">
+<!-- <mat-list *ngFor="let list of lists">
     <mat-list-item>
       <button>{{list.id}}</button>{{list.name}}
       <span class="example-fill-remaining-space"></span>
@@ -19,12 +8,26 @@
       <button (click)="delete(list)" color="primary">
           <mat-icon>cancel</mat-icon>
         </button>
-        <!-- <button (click)="addList(hero)" class="sm-button" color="primary">
-          <mat-icon>add_shopping_cart</mat-icon>
-        </button> -->
+
     </mat-list-item>
     <mat-divider></mat-divider>
-  </mat-list>
+  </mat-list> -->
+  <mat-list *ngFor="let list of lists">
+      <mat-list-item>
+        <img matListAvatar src="{{list.imageUrl}}" />
+        <h4 routerLink="/detail/{{list.id}}" mat-line>{{list.name}}</h4>
+        <h6 *ngIf="list.onSale" mat-line><s>RM {{list.price}}</s> RM {{list.discount}}</h6>
+        <h6 *ngIf="!list.onSale" mat-line>RM {{list.price}}</h6>
+  
+        <span *ngIf="list.onSale" class="badge badge-pill badge-danger">On sale</span>
+        <mat-action-list>
+            <button class="btn btn-danger" (click)="delete(list)">
+                <mat-icon>cancel</mat-icon>
+              </button>
+        </mat-action-list>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
 <mat-card>
     <mat-form-field style="width: 100%;
     margin-right: 1em;">
@@ -42,6 +45,3 @@
       <span class="example-fill-remaining-space"> </span>
       <button mat-raised-button>Checkout</button>
 </mat-card>
-
-
-

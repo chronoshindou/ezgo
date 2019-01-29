@@ -74,14 +74,34 @@
 </ng-template>
 </owl-carousel-o> -->
 <owl-carousel [options]="mySlideOptions" [items]="promos" [carouselClasses]="['owl-theme', 'sliding']" >
-    <mat-card class="example-card" style="text-align:-webkit-center" *ngFor="let promo of promos;let i = index">
+    <div class="card-group" *ngFor="let promo of promos;let i = index">
+        <div class="card" style="width: 8rem;">
+            <img class="card-img-top" src="{{promo.imageUrl}}" style="width:50%" alt="Card image cap">
+            <div class="card-body">
+                <h4>
+                    RM {{promo.price}}
+                  </h4>
+                  <h6 class="prod-name">{{promo.name}}</h6>
+                  <button (click)="addFav(promo)" *ngIf="promo.favourite" style="color:crimson" mat-icon-button>
+                      <mat-icon>favorite</mat-icon>
+                    </button>
+                    <button (click)="addFav(promo)" *ngIf="!promo.favourite" mat-icon-button>
+                      <mat-icon>favorite</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="addList(promo)">
+                      <mat-icon>add_shopping_cart</mat-icon>
+                    </button>
+            </div>
+          </div>
+          </div>
+          <!-- <mat-card class="example-card" style="text-align:-webkit-center" *ngFor="let promo of promos;let i = index">
         <img mat-card-image src="{{promo.imageUrl}}"  style="width:50%" alt="Photo of {{promo.name}}">
         <!--  style="max-width:10em;height:auto;margin-left:1%"  -->
-        <mat-card-content>
-          <h2>
+        <!-- <mat-card-content>
+          <h4>
             RM {{promo.price}}
-          </h2>
-          <h3>{{promo.name}}</h3>
+          </h4>
+          <h6>{{promo.name}}</h6>
         </mat-card-content>
         <mat-card-actions>
             <button mat-icon-button (click)="addFav(promo)" *ngIf="promo.favourite" style="color:crimson">
@@ -94,30 +114,12 @@
                 <mat-icon>add_shopping_cart</mat-icon>
               </button>
         </mat-card-actions>
-      </mat-card>
-  <!-- <div style="margin:2em" class="item" *ngFor="let promo of promos;let i = index">
-   <div>
-     <img style="max-width:10em;height:auto;margin-left:25%" src={{promo.imageUrl}}/>
-   </div>
-   <p><span>{{promo.name}} RM {{promo.price}}</span>
-    <span class="example-fill-remaining-space"></span>
-    <button (click)="addFav(promo)" *ngIf="promo.favourite" style="color:crimson" mat-button>
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button (click)="addFav(promo)" *ngIf="!promo.favourite" mat-button>
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-button (click)="addList()">
-      <mat-icon>add_shopping_cart</mat-icon>
-    </button>
-
-  </p>
-  </div> -->
+      </mat-card> -->
  </owl-carousel>
 
 
  <h3>What's next ?</h3>
- <button style="width:100%;background-color: darkgreen;color: white;" 
+ <button class="btn btn-success" style="width:100%;color: white;" 
  mat-raised-button routerLink="/heroes">Start Shopping</button>
 
 <button style="width:100%" mat-raised-button (click)="openDialog()">Change Store</button>

@@ -9,4 +9,6 @@ export class List {
   imageUrl?: string;
   favourite?: boolean;
   floor?: string;
+  onSale?: boolean;
+  discount?: number;
 }

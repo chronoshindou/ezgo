@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
 
   mySlideImages = [1,2,3].map((i)=> `https://picsum.photos/640/480?image=${i}`);
 myCarouselImages =[1,2,3,4,5,6].map((i)=>`https://picsum.photos/640/480?image=${i}`);
-mySlideOptions={items: 2, dots: false, nav: true, autoPlay: true, loop: false,center: false,rewind:true,autoplay:true,autoplaySpeed: 10,slideTransition: "linear"};
+mySlideOptions={items: 3, dots: false, nav: true, autoPlay: true, loop: false,center: false,rewind:true,autoplay:true,autoplaySpeed: 10,slideTransition: "linear"};
 // myCarouselOptions={items: 3, dots: true, nav: true};
 
 myControl = new FormControl();
@@ -119,8 +119,9 @@ filteredOptions: Observable<Hero[]>;
     .subscribe(promos => this.promos = promos.slice(1,5));
   }
 
-  addList(){
+  addList(promo: Promotion){
     let snackBarRef = this.snackBar.open('Added to shop list', 'Ok');
+    this.heroService.addList(promo).subscribe();
 
   }
   openBottomSheet(): void {

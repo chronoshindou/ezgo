@@ -146,6 +146,9 @@ export class HeroesComponent implements OnInit {
     //   duration: 500,
     // });
     this.heroService.addList(hero).subscribe();
+    // this.heroService.addList(hero).subscribe(hero => {
+    //   this.lists.push(hero);
+    // });
   }
 
   addFav(hero: Promotion) {

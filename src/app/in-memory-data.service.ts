@@ -10,15 +10,15 @@ import { Injectable } from '@angular/core';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const heroes = [
-      { id: 1, name: 'Illy Coffee 500g', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg' },
-      { id: 2, name: 'Narco', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg' },
-      { id: 3, name: 'Bombasto', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg' },
-      { id: 4, name: 'Celeritas', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg' },
-      { id: 5, name: 'Magneta', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg' },
-      { id: 6, name: 'RubberMan', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10 , imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg'},
-      { id: 7, name: 'Dynama', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: '' },
-      { id: 8, name: 'Dr IQ', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: '' },
-      { id: 9, name: 'Magma', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: '' },
+      { id: 1, discount: 8, name: 'Illy Coffee 500g', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg' },
+      { id: 2, discount: 8, name: 'Narco', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg', onSale: true },
+      { id: 3, discount: 8, name: 'Bombasto', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg' },
+      { id: 4, discount: 8, name: 'Celeritas', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg', onSale: true },
+      { id: 5, discount: 8, name: 'Magneta', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg' },
+      { id: 6, discount: 8, name: 'RubberMan', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10 , imageUrl: 'http://www.williams-sonoma.com/wsimgs/ab/images/dp/wcm/201849/0323/img51c.jpg'},
+      { id: 7, discount: 8, name: 'Dynama', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: '' },
+      { id: 8, discount: 8, name: 'Dr IQ', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: '' },
+      { id: 9, discount: 8, name: 'Magma', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: '' },
       { id: 10, name: 'Tornado', location: 'B.I.G.', isle: 'A', rack: 'A1', shelf: '5', price: 10, imageUrl: '' }
         ];
         //https://images-na.ssl-images-amazon.com/images/I/41t2fIYgo8L.jpg
