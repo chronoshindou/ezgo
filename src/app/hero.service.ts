@@ -14,12 +14,22 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+export interface Post {
+    title: string;
+    post_content: string;
+    who: string;
+    when?: Date;
+    comments?: any[];
+    imageUrl?: string;
+};
+
 @Injectable({ providedIn: 'root' })
 export class HeroService {
 
   private heroesUrl = 'api/heroes';  // URL to web api
   private listUrl = 'api/lists';
   private promoUrl = 'api/promos';
+  private postUrl = 'http://localhost:3000/post';
 
   constructor(
     private http: HttpClient,
@@ -33,6 +43,16 @@ export class HeroService {
         catchError(this.handleError('getHeroes', []))
       );
   }
+
+  getPost (): Observable<Post[]> {
+    return this.http.get<Post[]>(this.postUrl)
+      .pipe(
+        tap(_ => this.log('fetched heroes')),
+        catchError(this.handleError('getPosts', []))
+      );
+    // return this.http.get<Post[]>(this.postUrl);
+  }
+
 
   getList (): Observable<List[]> {
     return this.http.get<List[]>(this.listUrl)

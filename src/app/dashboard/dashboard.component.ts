@@ -15,7 +15,14 @@ export interface Tile {
   rows: number;
   text: string;
 }
-
+export interface Post {
+  title: string;
+  post_content: string;
+  who: string;
+  when?: Date;
+  comments?: any;
+  imageUrl?: string;
+};
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -24,6 +31,7 @@ export interface Tile {
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
   promos: Promotion[] = [];
+  post: Post[] = [];
 
   animal: string;
   name: string;
@@ -87,8 +95,9 @@ filteredOptions: Observable<Hero[]>;
     private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.getHeroes();
+    // this.getHeroes();
     this.getPromos();
+    this.getPost();
     // this.openBottomSheet();
 
     this.filteredOptions = this.myControl.valueChanges
@@ -114,9 +123,18 @@ filteredOptions: Observable<Hero[]>;
       .subscribe(heroes => this.heroes = heroes.slice(1, 5));
   }
 
+  getPost(): void {
+    this.heroService.getPost()
+      .subscribe(post => this.post);
+              // .subscribe(post=> this.post = post.slice(1, 5));
+      console.log("getPost : "+this.post)
+  }
+
   getPromos(): void {
     this.heroService.getPromos()
     .subscribe(promos => this.promos = promos.slice(1,5));
+    console.log("getPromos : "+this.promos)
+
   }
 
   addList(promo: Promotion){
